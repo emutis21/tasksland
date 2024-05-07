@@ -5,3 +5,158 @@
 :root {
   color-scheme: dark light;
 }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+
+    --primary: hsl(204, 100%, 38%);
+    --primary-content: hsl(204, 100%, 88%);
+    --primary-dark: hsl(204, 100%, 28%);
+    --primary-light: hsl(204, 100%, 48%);
+
+    --secondary: hsl(294, 100%, 38%);
+    --secondary-content: hsl(294, 100%, 88%);
+    --secondary-dark: hsl(294, 100%, 28%);
+    --secondary-light: hsl(294, 100%, 48%);
+
+    --background: hsl(210, 7%, 94%);
+    --foreground: hsl(0, 0%, 98%);
+    --border: hsl(204, 8%, 88%);
+
+    --copy: hsl(200, 8%, 15%);
+    --copy-light: hsl(203, 8%, 40%);
+    --copy-lighter: hsl(205, 7%, 55%);
+
+    --success: hsl(120, 100%, 38%);
+    --warning: hsl(60, 100%, 38%);
+    --error: hsl(0, 100%, 38%);
+    --success-content: hsl(120, 100%, 88%);
+    --warning-content: hsl(0, 0%, 0%);
+    --error-content: hsl(0, 100%, 88%);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --primary: hsl(204, 100%, 38%);
+    --primary-content: hsl(204, 100%, 88%);
+    --primary-dark: hsl(204, 100%, 18%);
+    --primary-light: hsl(204, 100%, 48%);
+
+    --secondary: hsl(294, 100%, 38%);
+    --secondary-content: hsl(294, 100%, 88%);
+    --secondary-dark: hsl(294, 100%, 28%);
+    --secondary-light: hsl(294, 100%, 48%);
+
+    --background: hsl(210, 7%, 94%);
+    --foreground: hsl(0, 0%, 98%);
+    --border: hsl(204, 8%, 88%);
+
+    --copy: hsl(200, 8%, 15%);
+    --copy-light: hsl(203, 8%, 40%);
+    --copy-lighter: hsl(205, 7%, 55%);
+
+    --success: hsl(120, 100%, 38%);
+    --warning: hsl(60, 100%, 38%);
+    --error: hsl(0, 100%, 38%);
+    --success-content: hsl(120, 100%, 88%);
+    --warning-content: hsl(0, 0%, 0%);
+    --error-content: hsl(0, 100%, 88%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    display: grid;
+    grid-template-columns: [full-width-start] 10% [breakout-start] 280px [content-start] 1fr [content-end] 280px [breakout-end] 10% [full-width-end];
+    grid-template-rows:
+      [full-height-start] 4rem [content-main-start] minmax(calc(100vh - 8rem), 1fr)
+      [content-main-end] 4rem [full-height-end];
+
+    @media (max-width: 1450px) {
+      grid-template-columns: [full-width-start] 5% [breakout-start] 250px [content-start] 1fr [content-end] 250px [breakout-end] 5% [full-width-end];
+    }
+
+    @media (max-width: 1080px) {
+      grid-template-columns: [full-width-start] 2% [breakout-start] 170px [content-start] 1fr [content-end] 170px [breakout-end] 2% [full-width-end];
+    }
+
+    @media (max-width: 705px) {
+      grid-template-columns: [full-width-start] 10px [breakout-start] 30px [content-start] 1fr [content-end] 30px [breakout-end] 10px [full-width-end];
+    }
+
+    > * {
+      grid-column: content;
+    }
+
+    main {
+      grid-row: content-main;
+    }
+  }
+}
