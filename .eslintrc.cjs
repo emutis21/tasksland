@@ -24,19 +24,22 @@ module.exports = {
     }
   },
   rules: {
-    'prettier/prettier': 'off',
-    'react/no-array-index-key': 'off',
-    '@typescript-eslint/no-shadow': 'off',
-    'jsx-a11y/label-has-associated-control': [
-      2,
+    'prettier/prettier': [
+      'warn',
       {
-        labelComponents: ['label'],
-        labelAttributes: ['htmlFor'],
-        controlComponents: ['input'],
-        assert: 'either',
-        depth: 3
+        printWidth: 100,
+        trailingComma: 'none',
+        tabWidth: 2,
+        semi: false,
+        singleQuote: true,
+        bracketSpacing: true,
+        arrowParens: 'always',
+        endOfLine: 'auto',
+        plugins: ['prettier-plugin-tailwindcss']
       }
     ],
+    'react/no-array-index-key': 'off',
+    '@typescript-eslint/no-shadow': 'off',
     'import/order': [
       'warn',
       {
@@ -88,6 +91,14 @@ module.exports = {
     '@typescript-eslint/prefer-promise-reject-errors': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-misused-promises': [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false
+        }
+      }
+    ],
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
