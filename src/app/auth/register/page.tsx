@@ -1,15 +1,8 @@
 import { RegisterForm } from '@/components/registerForm'
-import { cn } from '@/lib/utils'
+import CardForm from '@/components/styledCardForm'
 
-const page = () => {
-  return (
-    <main
-      className={cn('container', 'flex', 'flex-col', 'items-center', 'w-full', 'justify-center')}
-    >
-      <h1 className={cn('text-4xl', 'font-bold', 'text-center', 'mb-8')}>Regístrate</h1>
-      <RegisterForm />
-    </main>
-  )
+function RegisterPage() {
+  return <CardForm form={<RegisterForm />} title='Regístrate' />
 }
 
-export default page
+export default RegisterPage
