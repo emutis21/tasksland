@@ -1,7 +1,10 @@
+import { CustomKanban } from '@/modules/kanbanBoards/screens/customKanban'
+
 const page = () => {
   return (
-    <main>
+    <main className='[grid-column:breakout]'>
       <h1>Dashboard</h1>
+      <CustomKanban />
     </main>
   )
 }
