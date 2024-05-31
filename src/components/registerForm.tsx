@@ -53,11 +53,10 @@ export function RegisterForm() {
         'Content-Type': 'application/json'
       }
     })
+
     // const resJSON = await res.json()
 
-    if (res.ok) {
-      router.push('/auth/login')
-    }
+    if (res.ok) router.push('/auth/login')
   }
 
   return (
@@ -132,7 +131,15 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button
+          style={{
+            viewTransitionName: 'button'
+          }}
+          title='Registrar usuario'
+          type='submit'
+        >
+          Regístrate
+        </Button>
       </form>
     </Form>
   )
