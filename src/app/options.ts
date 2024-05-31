@@ -1,6 +1,6 @@
+import NextAuth, { type NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
-import { type NextAuthOptions } from 'next-auth'
 
 import db from '@/libs/db'
 
@@ -33,7 +33,21 @@ export const options: NextAuthOptions = {
         }
       }
     })
-  ]
+  ],
+  callbacks: {
+    session({ token, session }) {
+      if (token.sub) {
+        session.user.id = token.sub
+      }
 
-  // secret: process.env.SECRET
+      return session
+    }
+    // async jwt({ token, user, profile }) {
+    //   console.log({ token })
+
+    //   return token
+    // }
+  }
 }
+
+export default NextAuth(options)
