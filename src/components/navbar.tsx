@@ -1,19 +1,20 @@
 import { getServerSession } from 'next-auth'
+import { Link } from 'next-view-transitions'
 
 import { options } from '@/app/options'
 import { cn } from '@/lib/utils'
+
+import { buttonVariants } from './ui/button'
 
 async function Navbar() {
   const session = await getServerSession(options)
 
   const linksNotLogged = [
-    { href: '/', text: 'Home' },
     { href: '/auth/login', text: 'Login' },
     { href: '/auth/register', text: 'Register' }
   ]
 
   const linksLogged = [
-    { href: '/', text: 'Home' },
     { href: '/dashboard', text: 'Dashboard' },
     { href: '/api/auth/signout', text: 'Logout' }
   ]
@@ -36,17 +37,22 @@ async function Navbar() {
         'border-[var(--primary)]'
       )}
     >
-      <h2>Hola</h2>
+      <Link className={buttonVariants({ variant: 'link' })} href='/'>
+        TasksLand
+      </Link>
+
       <ul className={cn('flex', 'gap-4', 'list-none', 'md:[gap-8]')}>
         {session?.user
           ? linksLogged.map((link, index) => (
-              <li key={index}>
-                <a href={link.href}>{link.text}</a>
+              <li key={index} className={buttonVariants({ variant: 'link' })}>
+                <Link href={link.href}>{link.text}</Link>
               </li>
             ))
           : linksNotLogged.map((link, index) => (
               <li key={index}>
-                <a href={link.href}>{link.text}</a>
+                <Link className={buttonVariants({ variant: 'link' })} href={link.href}>
+                  {link.text}
+                </Link>
               </li>
             ))}
       </ul>
