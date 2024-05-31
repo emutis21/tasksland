@@ -65,7 +65,7 @@ export function LoginForm() {
                 />
               </FormControl>
               {/* <FormDescription>We will never share your email.</FormDescription> */}
-              <FormMessage className='text-red-500' />
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -85,11 +85,19 @@ export function LoginForm() {
                 />
               </FormControl>
               {/* <FormDescription>Must be at least 8 characters long.</FormDescription> */}
-              <FormMessage className='text-red-500' />
+              <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit'>Ingresa</Button>
+        <Button
+          style={{
+            viewTransitionName: 'button'
+          }}
+          title='Enviar formulario'
+          type='submit'
+        >
+          Ingresa
+        </Button>
       </form>
     </Form>
   )
